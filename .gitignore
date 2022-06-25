@@ -1,0 +1,6 @@
+# prod
+dist/
+.env
+
+# deps
+node_modules/
