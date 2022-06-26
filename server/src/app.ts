@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import logger from "@utils/logger";
 import { initializeDbConnection } from "@utils/db";
 import userRoute from "@modules/user/user-route";
+import authRoute from "@modules/auth/auth-route";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(
 app.use(helmet());
 
 app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
 
 const server = app.listen(PORT, async () => {
   await initializeDbConnection();
