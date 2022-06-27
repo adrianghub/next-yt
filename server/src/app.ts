@@ -7,6 +7,7 @@ import logger from "@utils/logger";
 import { initializeDbConnection } from "@utils/db";
 import userRoute from "@modules/user/user-route";
 import authRoute from "@modules/auth/auth-route";
+import deserializeUser from "@middleware/deserializeUser";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(
   })
 );
 app.use(helmet());
+app.use(deserializeUser);
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
