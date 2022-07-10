@@ -1,6 +1,7 @@
 # prod
 dist/
 .env
+db
 
 # deps
 node_modules/
