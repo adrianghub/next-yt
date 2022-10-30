@@ -3,10 +3,7 @@ import logger from "./logger";
 
 export async function initializeDbConnection() {
   try {
-    await mongoose.connect(
-      `${process.env.DB_CONNECTION_STRING}:${process.env.DB_CONNECTION_PORT}` ||
-        ""
-    );
+    await mongoose.connect(process.env.DB_URL || "");
     logger.info("Sucessfully connected to database.");
   } catch (error) {
     logger.error(error, "Connection to database failed.");

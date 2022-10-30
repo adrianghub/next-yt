@@ -7,7 +7,7 @@ import logger from "@utils/logger";
 import { initializeDbConnection } from "@utils/db";
 import userRoute from "@modules/user/user-route";
 import authRoute from "@modules/auth/auth-route";
-import videoRoute from '@modules/video/video.route';
+import videoRoute from "@modules/video/video.route";
 import deserializeUser from "@middleware/deserializeUser";
 
 dotenv.config();
@@ -42,8 +42,6 @@ const signals = ["SIGTERM", "SIGINT"];
 function gracefulShutdown(signal: string) {
   process.on(signal, async () => {
     server.close();
-
-    // disconnect from db
 
     logger.info("Process killed with signal", signal);
 

@@ -1,27 +1,31 @@
 version: "3.8"
 
 services:
-  node-api:
+  backend:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: node-api
     env_file:
       - ./.env
     restart: always
     ports:
-      - "4000:4000"
+      - 4000:4000
     volumes:
       - /app/node_modules
       - ./:/app
     depends_on:
-      - next-yt-db 
-  next-yt-db: 
+      - database
+  database:
     image: mongo
+    restart: always
     ports:
-      - "27017:27017"
+      - 27017:27017
     env_file:
       - ./.env
+  database-gui:
+    image: mongo-express
     restart: always
-    volumes:
-      - ./db/:/data/db
+    ports:
+      - 8081:8081
+    env_file:
+      - ./.env
